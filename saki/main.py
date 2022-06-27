@@ -5,7 +5,7 @@ from typing import Optional
 from pathlib import Path, PurePath
 import typer
 import npyscreen
-app_name, version = 'saki', '1.1.1'
+app_name, version = 'saki', '1.1.2'
 
 app = typer.Typer()
 
