@@ -1,12 +1,11 @@
 from genericpath import exists
 from pathlib import Path, PurePath
+from re import T
 from typing import Optional
 from pathlib import Path, PurePath
 import typer
-
-
-__app_name__ = "saki"
-__version__ = "1.0.0"
+import npyscreen
+from .vars import app_name, version
 
 app = typer.Typer()
 
@@ -37,9 +36,45 @@ def read(path: str) -> None:
                     chunk = f.read(SIZE)
     
 
+@app.command()
+def write(path: str) -> None:
+    if path == None:
+        typer.echo("No path specified")
+        return
+    else:
+        if exists(path):
+            file = get_file(path=path)
+
+
+            with open(file, 'r') as f:
+                text = f.read()
+            
+            data = text
+            def edit(*args):
+                
+                form = npyscreen.Form()
+
+                edit = form.add(npyscreen.MultiLineEdit, name='text', value=data)
+
+                form.edit()
+                
+                text = edit.value
+
+                with open(file, 'w') as f:
+                    f.write(text)
+    
+                return 
+
+            npyscreen.wrapper_basic(edit)
+
+
+
+
+
+
 def _version_callback(value: bool) -> None:
     if value:
-        typer.echo(f"{__app_name__} v{__version__}")
+        typer.echo(f"{app_name} v{version}")
         raise typer.Exit()
 
 @app.callback()
@@ -54,3 +89,5 @@ def main(
     )
 ) -> None:
     return
+
+
