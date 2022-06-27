@@ -1,3 +1,1 @@
-from .vars import version
-
-__version__ = version
+__version__ = '1.1.0'

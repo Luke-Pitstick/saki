@@ -1,5 +1,5 @@
-from saki import __version__
+from ..saki.info import version
 
 
 def test_version():
-    assert __version__ == '0.1.0'
+    assert __version__ == version
