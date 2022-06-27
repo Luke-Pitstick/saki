@@ -4,4 +4,12 @@
 
 ## Desciption
 
-Saki is an alternative to the cat command
+Saki is an alternative of the cat and nano command line tools.
+
+## Links
+
+Github - https://github.com/Luke-Pitstick/saki
+
+PyPi - https://pypi.org/project/saki/
+
+
